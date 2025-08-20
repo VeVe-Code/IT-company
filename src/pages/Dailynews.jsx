@@ -24,7 +24,7 @@ function DailyNews() {
   }, [page]);
 
   return (
-    <div className="px-8 py-10 bg-gray-50 min-h-screen">
+    <div className="px-8 py-10 bg-gray-50 min-h-screen mt-10">
        <h2 className="text-2xl font-semibold text-center mb-10">News</h2>
       {news.length > 0 ? news.map(n => (
         <motion.div
@@ -74,7 +74,7 @@ function DailyNews() {
             <nav className="inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
               {/* Previous */}
               <Link
-                to={`/services/?page=${links.previousPage ? page - 1 : page}`}
+                to={`/Dailynews/?page=${links.previousPage ? page - 1 : page}`}
                 className="relative inline-flex items-center rounded-l-md px-2 py-2 text-sm text-gray-500 bg-white border border-gray-300 hover:bg-gray-100"
               >
                 <span className="sr-only">Previous</span>
@@ -87,7 +87,7 @@ function DailyNews() {
               {links.loopLink.map((link) => (
                 <Link
                   key={link.number}
-                  to={`/services/?page=${link.number}`}
+                  to={`/Dailynews/?page=${link.number}`}
                   className={`relative inline-flex items-center px-4 py-2 text-sm font-medium border ${
                     link.number === page
                       ? 'bg-orange-400 text-white'
@@ -100,7 +100,7 @@ function DailyNews() {
 
               {/* Next */}
               <Link
-                to={`/services/?page=${links.nextPage ? page + 1 : page}`}
+                to={`/Dailynews/?page=${links.nextPage ? page + 1 : page}`}
                 className="relative inline-flex items-center rounded-r-md px-2 py-2 text-sm text-gray-500 bg-white border border-gray-300 hover:bg-gray-100"
               >
                 <span className="sr-only">Next</span>

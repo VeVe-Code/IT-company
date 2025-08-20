@@ -25,7 +25,7 @@ function Services() {
         FetchServices();
     },[page])
   return (
-  <div>
+  <div className='mt-10'>
      <div>
   <section className="px-8 py-10 bg-gray-50 min-h-screen">
     <h2 className="text-2xl font-semibold text-center mb-12">Services</h2>
