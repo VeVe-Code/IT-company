@@ -8,6 +8,7 @@ import {
 } from "@heroicons/react/24/outline";
 import { useState } from "react";
 import axios from "axios";
+import DOMPurify from "dompurify";
 
 const Contactus = () => {
 
@@ -16,19 +17,21 @@ const Contactus = () => {
   let [email, setEmail] = useState("");
   let [phno, setPhno] = useState("");
   let [msg, setMsg] = useState("");
-
+ let [error,setError]= useState({})
 
 let Createdata = async(e) =>{
 try{ e.preventDefault()
-
+  const safeMessage = DOMPurify.sanitize(msg, { ALLOWED_TAGS: [], ALLOWED_ATTR: [] });
 let data = {
   name,
   email,
   phno,
-  msg
+  msg: safeMessage
 }
 
-  let res = await axios.post("http://localhost:4000/api/contactus",data)
+  let res = await axios.post("http://localhost:4000/api/contactus",data,{
+      headers: { "Content-Type": "application/json" }
+  })
   setName('')
   setEmail('')
   setPhno('')
@@ -37,9 +40,14 @@ let data = {
   // if(res===200){
   //   console.log(res)
   // }
+  setError('')
  console.log(res) 
 }catch(e){
-  console.log(e)
+//  setError(Object.keys(e.response.data.error))
+ setError(e.response.data.error)
+
+
+
 }}
 
   return (
@@ -77,7 +85,7 @@ let data = {
                 </p>
               </div>
             </motion.div>
-
+           
             {/* Email */}
              <motion.div
            
@@ -175,7 +183,9 @@ let data = {
                   className="mt-2 w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-indigo-500 focus:border-indigo-500"
                   placeholder="Enter your name"
                 />
+    {error.name && <p className="text-red-600 text-sm">{error.name.msg}</p>}
               </motion.div>
+            
 
                 <motion.div
           initial={{ opacity: 0, x: 50 }}
@@ -192,6 +202,7 @@ let data = {
                   className="mt-2 w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-indigo-500 focus:border-indigo-500"
                   placeholder="Enter your phone number"
                 />
+                {error.phno && <p className="text-red-600 text-sm">{error.phno.msg}</p>}
                </motion.div>
 
              <motion.div
@@ -209,6 +220,7 @@ let data = {
                   className="mt-2 w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-indigo-500 focus:border-indigo-500"
                   placeholder="Enter your email"
                 />
+                {error.email && <p className="text-red-600 text-sm">{error.email.msg}</p>}
               </motion.div>
 
                <motion.div
@@ -226,6 +238,7 @@ let data = {
                   className="mt-2 w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-indigo-500 focus:border-indigo-500"
                   placeholder="Write your feedback..."
                 ></textarea>
+                {error.msg && <p className="text-red-600 text-sm">{error.msg.msg}</p>}
           </motion.div>
 
               <motion.button
@@ -238,6 +251,11 @@ let data = {
               >
                 Submit
               </motion.button>
+              <ul className="list-disc pl-3">
+                {!!error.length && error.map((error,i) => (
+                    <li className="text-red-600 text-sm" key={i}>{error} is invalid</li>
+                ))}
+              </ul>
             </form>
           </div>
         </div>

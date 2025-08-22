@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 export default function Aboutus() {
   return (
-    <section className="bg-gray-50 py-20 px-6 md:px-12 lg:px-24">
+    <section className="bg-gray-50 py-20 px-6 md:px-12 lg:px-24 mt-7">
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
         
         {/* Left side - Image / Illustration */}
