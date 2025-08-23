@@ -51,7 +51,10 @@ let data = {
 }}
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex flex-col items-center py-12 px-4">
+   <div className="min-h-screen bg-gray-50">
+      {/* Section */}
+      <section className="h-screen py-20 px-6 md:px-12 lg:px-24">
+    <div className="min-h-screen bg-blue-950 rounded-2xl from-blue-50 to-indigo-100 flex flex-col items-center py-12 px-4 mt-20">
       {/* Header */}
       <div className="max-w-3xl w-full">
         <div className="bg-white shadow-2xl rounded-3xl p-10">
@@ -159,7 +162,7 @@ let data = {
           </div>
 
           {/* Feedback Form */}
-          <div className="mt-12 bg-gradient-to-r from-indigo-50 to-indigo-100 rounded-2xl p-8 shadow-inner">
+          <div className="mt-12 bg-amber-50 from-indigo-50 to-indigo-100 rounded-2xl p-8 shadow-inner">
             <h2 className="text-2xl font-bold text-gray-800 text-center mb-4">
               Contact us
             </h2>
@@ -261,6 +264,8 @@ let data = {
         </div>
       </div>
     </div>
+    </section>
+</div>
   );
 };
 

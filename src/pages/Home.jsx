@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white text-gray-900">
+    <div className="min-h-screen mt-24 bg-white text-gray-900">
 
     
     
@@ -103,7 +103,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="py-10 bg-gray-100 text-center">
+      <footer className="py-10 bg-blue-950 text-center">
         <p className="text-gray-500">&copy; 2025 company. All rights reserved.</p>
       </footer>
     </div>

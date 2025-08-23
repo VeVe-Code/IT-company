@@ -22,11 +22,13 @@ export default function Navbar() {
       className="fixed top-4 left-1/2 -translate-x-1/2 z-50"
     >
       {/* Floating Glass Navbar */}
-      <nav className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl shadow-lg px-6 py-3 flex items-center justify-between w-[90vw] md:w-[70vw] text-black">
+    <nav className="bg-[#f8f9fa]/90 backdrop-blur-xl border border-white/10 rounded-2xl shadow-lg px-6 py-3 flex items-center justify-between w-[90vw] md:w-[70vw] text-black">
         {/* Logo */}
-        <div className="text-2xl font-extrabold tracking-wide">
-          <Link to="/" className="text-shadow-neutral-900 hover:text-neutral-950 transition">
-            IT<span className="text-blue-900">Company</span>
+        <div className="text-2xl font-extrabold tracking-wide flex items-center">
+          <Link to="/" className="flex items-center space-x-2 text-shadow-neutral-900 hover:text-neutral-950 transition">
+            {/* Use public/logo.png or import logo image */}
+            <img src="/logo.png" className="w-20 h-20 rounded-xl object-contain" alt="Logo" />
+          
           </Link>
         </div>
 

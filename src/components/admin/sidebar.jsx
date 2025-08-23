@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import { useContext, useState } from 'react'
 import { Link, useNavigate } from 'react-router'
 import { AuthContext } from '../../contexts/AuthContext'
 import axios from '../../helpers/axios'
@@ -22,7 +22,12 @@ function Sidebar() {
         <>
           {/* Mobile header */}
           <div className="md:hidden flex justify-between items-center bg-gray-800 text-white p-4 fixed w-full top-0 z-50">
-            <span className="text-lg font-bold">Admin Panel</span>
+           <div className='flex gap-7 items-center'>
+            <img src="/adminlogo.jpg" className='w-14 rounded items-center' alt="Logo" />
+       <span className="text-lg font-bold whitespace-nowrap">
+  Admin Panel
+</span>
+           </div>
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="bg-gray-700 px-3 py-2 rounded hover:bg-gray-600"
@@ -48,8 +53,11 @@ function Sidebar() {
               ${isOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"}
             `}
           >
-            <div className="hidden md:block p-4 text-2xl font-bold border-b border-gray-700">
+            <div className='flex items-center gap-4'>
+              <img src="/adminlogo.jpg" className='w-16 rounded' alt="" />
+              <div className="hidden md:block p-4 text-2xl font-bold border-b border-gray-700">
               Admin Panel
+            </div>
             </div>
 
             <nav className="flex-1 p-6 mt-16 md:mt-0">

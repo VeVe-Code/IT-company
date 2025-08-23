@@ -44,8 +44,11 @@ function DailyNews() {
   }, [page,search]);
 
   return (
-    <div className="px-8 py-10 bg-gray-50 min-h-screen mt-16">
-     <div className="flex flex-col md:flex-row md:items-center md:justify-between px-4 md:px-10 lg:px-52 py-2 gap-4">
+    
+<div className="min-h-screen bg-gray-50">
+      {/* Section */}
+      <section className="h-screen py-20 px-6 md:px-12 lg:px-24">
+     <div className="flex flex-col md:flex-row md:items-center md:justify-between px-4 md:px-10 lg:px-52 py-2 gap-4 mt-20">
   {/* Title */}
   <h2 className="text-2xl md:text-3xl font-bold text-left md:text-center mb-2 md:mb-0">
     News
@@ -138,7 +141,7 @@ function DailyNews() {
         // ✅ No Data Section
         <h1 className="text-center text-gray-500">no data</h1>
       )}
-      
+
 
       {/* Pagination */}
       {!!links && (
@@ -185,7 +188,9 @@ function DailyNews() {
           </div>
         </div>
       )}
+            </section>
     </div>
+          
   );
 }
 
