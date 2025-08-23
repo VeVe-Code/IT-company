@@ -3,12 +3,15 @@ import { motion } from "framer-motion";
 import axios from '../helpers/axios';
 import { Link, useLocation } from 'react-router-dom';
 
+import { Search } from "lucide-react";
+
 function DailyNews() {
   const [news, setNews] = useState([]);
   const [links, setLinks] = useState(null);
   let [loading, setLoading]= useState(false)
   const location = useLocation();
-
+   let [search, setSearch] = useState("");
+      const [focused, setFocused] = useState(false);
   let searchQuery = new URLSearchParams(location.search);
   let page = parseInt(searchQuery.get('page')) || 1;
 
@@ -23,13 +26,62 @@ function DailyNews() {
       }
       setLoading(false)
     };
+      let searchNews = async () => {
+    let res = await axios.get('/api/news?title=' + search);
+    if (res.status === 200) {
+      let data = res.data;
+      setNews(data.data);
+      setLinks(null);
+    }
+  };
+
+  if (search) {
+    searchNews();
+  } else {
     fetchNews();
-  }, [page]);
+  }
+    fetchNews();
+  }, [page,search]);
 
   return (
-    <div className="px-8 py-10 bg-gray-50 min-h-screen mt-10">
-       <h2 className="text-2xl font-semibold text-center mb-10">News</h2>
-     
+    <div className="px-8 py-10 bg-gray-50 min-h-screen mt-16">
+     <div className="flex flex-col md:flex-row md:items-center md:justify-between px-4 md:px-10 lg:px-52 py-2 gap-4">
+  {/* Title */}
+  <h2 className="text-2xl md:text-3xl font-bold text-left md:text-center mb-2 md:mb-0">
+    News
+  </h2>
+
+  {/* Search */}
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.5 }}
+    className="flex items-center justify-start md:justify-center lg:justify-end w-full md:w-auto"
+  >
+    <motion.div
+      animate={{
+        width: focused
+          ? "100%" // expands fully on focus (mobile)
+          : "90%",
+      }}
+      transition={{ duration: 0.4, type: "spring" }}
+      className="flex items-center rounded-2xl px-3 py-2 bg-white shadow-lg border 
+                 w-full sm:w-[16rem] md:w-[20rem] lg:w-[24rem]"
+    >
+      <Search className="text-gray-500 mr-2" size={20} />
+      <input
+        type="text"
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        onFocus={() => setFocused(true)}
+        onBlur={() => setFocused(false)}
+        placeholder="Search data..."
+        className="w-full bg-transparent outline-none text-sm sm:text-base"
+      />
+    </motion.div>
+  </motion.div>
+</div>
+       
           {loading ? (
         // ✅ Spinner Section
         <div
