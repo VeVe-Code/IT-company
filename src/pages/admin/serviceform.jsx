@@ -7,7 +7,7 @@ function ServiceForm() {
     let {id} = useParams()
    let [title,setTitle] = useState('')
    let [about,setAbout] = useState('') 
-   let [error, setError] = useState(null)
+   let [error, setError] = useState({})
     let naviagte = useNavigate()
    
 useEffect(()=>{
@@ -70,7 +70,7 @@ if(id){
               placeholder="Enter service title"
               className="mt-1 block w-full rounded-md border border-gray-300 p-3 focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
             />
-            
+              {error.title && <p className="text-red-600 text-sm">{error.title.msg}</p>}
           </div>
 
           {/* About */}
@@ -85,7 +85,7 @@ if(id){
               placeholder="Describe the service"
               className="mt-1 block w-full rounded-md border border-gray-300 p-3 focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
             ></textarea>
-            
+              {error.about && <p className="text-red-600 text-sm">{error.about.msg}</p>}
           </div>
 
           {/* Submit */}

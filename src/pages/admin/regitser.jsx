@@ -73,7 +73,7 @@ if(res.status===200){
               placeholder="Enter service title"
               className="mt-1 block w-full rounded-md border border-gray-300 p-3 focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
             />
-            {!!(error &&  error.email )&& <h1 className="text-red text-sm">{error.email.msg}</h1>}
+            {!!(error &&  error.email )&& <h1 className="text-red-600 text-sm ">{error.email.msg}</h1>}
           </div>
        <div className="transition-transform duration-300 hover:scale-105">
   <label className="block text-sm font-medium text-gray-700">
@@ -86,7 +86,7 @@ if(res.status===200){
     placeholder="Enter your password"
     className="mt-1 block w-full rounded-md border border-gray-300 p-3 focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
   />
-  {!!(error &&  error.password )&& <h1 className="text-red text-sm">{error.password.msg}</h1>}
+  {!!(error &&  error.password )&& <h1 className="text-red-600 text-sm">{error.password.msg} password</h1>}
 </div>
           {/* Submit */}
           <button

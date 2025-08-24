@@ -9,7 +9,7 @@ function NewsForm() {
     const [about, setAbout] = useState('')
     const [file, setFile] = useState(null)
     let [preview, setPreview] = useState(null)
-    const [error, setError] = useState(null)
+    const [error, setError] = useState({})
     const { id } = useParams()
     const navigate = useNavigate()
    
@@ -107,7 +107,7 @@ formData.set('photo',file)
               placeholder="Enter service title"
               className="mt-1 block w-full rounded-md border border-gray-300 p-3 focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
             />
-            
+              {error.title && <p className="text-red-600 text-sm">{error.title.msg}</p>}
           </div>
             <div className="transition-transform duration-300 hover:scale-105">
             <label className="block text-sm font-medium text-gray-700">
@@ -120,7 +120,7 @@ formData.set('photo',file)
               placeholder="Describe the service"
               className="mt-1 block w-full rounded-md border border-gray-300 p-3 focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
             ></textarea>
-            
+              {error.description && <p className="text-red-600 text-sm">{error.description.msg}</p>}
           </div>
 
 
@@ -136,7 +136,7 @@ formData.set('photo',file)
               placeholder="Describe the service"
               className="mt-1 block w-full rounded-md border border-gray-300 p-3 focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
             ></textarea>
-            
+              {error.about && <p className="text-red-600 text-sm">{error.about.msg}</p>}
           </div>
 
           {/* Submit */}
