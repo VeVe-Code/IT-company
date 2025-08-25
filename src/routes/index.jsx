@@ -12,7 +12,7 @@ import NewsForm from "../pages/admin/newsform.jsx";
 import Services from "../pages/services.jsx";
 import Dailynews from "../pages/Dailynews.jsx";
 import ContactUs from "../pages/Contactus.jsx";
-import Aboutus from "../pages/Aboutus.jsx";
+import Aboutus from "../pages/aboutus.jsx"
 import AdminContactUs from "../pages/admin/admincontactus.jsx";
 import NewsDetail from "../pages/newsdetail.jsx";
 import AdminNewsDetail from "../pages/admin/adminnewsdetail.jsx";
